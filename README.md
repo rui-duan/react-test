@@ -29,10 +29,12 @@
 - Branch "withflux" is using Redux as flux container and mocha for unit test. It come up with Node.js server and webpack as well.
 
 To run it, simple run the command below
+```
  $ npm install
  $ npm start
- 
+```
 To run test
+```
  $ npm test
-
+```
 
