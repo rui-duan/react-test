@@ -1,25 +1,10 @@
-var ArticleList = React.createClass({
-  getInitialState: function() {
-    return {
-      result: ''
-    };
-  },
-  
-  componentDidMount: function() {
-    $.getJSON("articles.json", function(data) {
-      if (this.isMounted()) {
-        this.setState({
-          result: data
-        });
-      }
-    }.bind(this));
-  },
-
+var ArticleList = React.createClass({ 
   render: function() {
     var articleLimit = this.props.articleLimit;
+    var articles = this.props.articles;
     var articleNodes = "";
-    if(this.state.result !== ""){
-      var articleNodes = this.state.result.map(function(article) {
+    if(articles !== ""){
+      var articleNodes = articles.map(function(article) {
         if(article.id <= articleLimit){
           return (
           <Article key={article.id} title={article.title} image={article.image}>
@@ -57,12 +42,24 @@ var MoreButton = React.createClass({
   }
 });
 
-var ArticleBox = React.createClass({
+var ArticleArea = React.createClass({
   noOfNewArticles: 3,
+  
   getInitialState: function() {
     return {
+      result: '',
       articleLimit: this.noOfNewArticles
     };
+  },
+  
+  componentDidMount: function() {
+    $.getJSON("articles.json", function(data) {
+      if (this.isMounted()) {
+        this.setState({
+          result: data
+        });
+      }
+    }.bind(this));
   },
   
   more: function(){
@@ -72,23 +69,23 @@ var ArticleBox = React.createClass({
   },
   
   render: function() {
-    return (
-      <div>
-      <ArticleList articleLimit={this.state.articleLimit} />
-      <MoreButton onButtonClicked={this.more} />
-      </div>
-    );
-  }
-});
-
-var ArticleArea = React.createClass({
-  render: function() {
-    return (
-      <div>
+    if (this.state.result !== "" && this.state.articleLimit >= this.state.result.length) {
+      return (
+        <div>
         <h1>Articles</h1>
-        <ArticleBox />
-      </div>
-    );
+        <ArticleList articleLimit={this.state.articleLimit} articles={this.state.result}/>
+        </div>
+      );
+    }
+    else{
+      return (
+        <div>
+        <h1>Articles</h1>
+        <ArticleList articleLimit={this.state.articleLimit} articles={this.state.result}/>
+        <MoreButton onButtonClicked={this.more} />
+        </div>
+      );
+    }
   }
 });
 
