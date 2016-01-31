@@ -8,16 +8,16 @@ export default class ArticleArea extends Component {
     super(props);
     this.state = {
       result: ""
-    };
+    }
   }
   
   componentDidMount() {
     $.getJSON("/data", function(data) {
         this.setState({
           result: data
-        });
+        })
       
-    }.bind(this));
+    }.bind(this))
   }
   
   render() {
