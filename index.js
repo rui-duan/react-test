@@ -11,7 +11,7 @@ function render() {
   ReactDOM.render(
   <ArticleArea articleLimit={store.getState()} more={() => store.dispatch(({ type: 'MORE' }))}/>,
   rootEl
-);
+  )
 }
 
 render()

@@ -9,7 +9,7 @@ export default class Article extends Component {
         </h2>
         <img src={this.props.image} />
       </div>
-    );
+    )
   }
 }
 

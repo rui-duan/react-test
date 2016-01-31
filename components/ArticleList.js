@@ -11,9 +11,9 @@ export default class ArticleList extends Component {
           return (
           <Article key={article.id} title={article.title} image={article.image}>
           </Article>
-          );
+          )
         }
-      });
+      })
     }
     return (
       <div>
