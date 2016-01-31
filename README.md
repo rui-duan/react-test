@@ -25,8 +25,8 @@
 }
 ```
 ## Solution
-- Branch "master" is simple solution with basic react components. flux and unit test are not included. To run it, just download and open index.html in browser.
-- Branch "withflux" is using Redux as flux container and mocha for unit test. It come up with Node.js server and webpack as well.
+- Branch "feature" is simple solution with basic react components. flux and unit test are not included. To run it, just download and open index.html in browser.
+- Branch "feature-redux" is using Redux as flux container and mocha for unit test. It come up with Node.js server and webpack as well.
 
 To run it, simple run the command below
 ```
